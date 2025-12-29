@@ -1,0 +1,198 @@
+
+import { Exercise } from './types';
+
+const findExerciseById = (id: string): Exercise => {
+  const exercise = EXERCISES.find(e => e.id === id);
+  if (!exercise) {
+    throw new Error(`Initialization Error: Exercise with id "${id}" not found.`);
+  }
+  return exercise;
+};
+
+export const DAILY_CHALLENGES: Exercise[] = [
+  {
+    id: 'push-up-challenge',
+    name: "Today's Challenge",
+    description: 'Master your push-up form',
+    instructions: 'Lower your chest to the floor while keeping your back flat. Push back up to full extension.',
+    difficulty: 'Intermediate',
+    duration: 5,
+    calories: 50,
+    image: 'https://images.pexels.com/photos/3076516/pexels-photo-3076516.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+    metValue: 8.0,
+    cameraFacing: 'side',
+    angleLandmarks: ['leftShoulder', 'leftElbow', 'leftWrist'],
+    angleThresholds: { up: 160, down: 90 },
+  },
+];
+
+export const EXERCISES: Exercise[] = [
+  {
+    id: 'push-up',
+    name: 'Push-ups',
+    description: 'Target chest, shoulders, and triceps.',
+    instructions: '1. High plank position. \n2. Lower chest to floor. \n3. Push back up.',
+    aiInstructions: "Keep elbows at 45 degrees. Maintain a straight back throughout.",
+    difficulty: 'Intermediate',
+    duration: 10,
+    calories: 100,
+    image: 'https://images.pexels.com/photos/416405/pexels-photo-416405.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+    angleLandmarks: ['leftShoulder', 'leftElbow', 'leftWrist'],
+    angleThresholds: { up: 160, down: 85 },
+    cameraFacing: 'side',
+    metValue: 8.0,
+    category: 'Upper body',
+  },
+  {
+    id: 'squat',
+    name: 'Squats',
+    description: 'The king of lower body exercises.',
+    instructions: '1. Feet shoulder-width apart. \n2. Lower hips until thighs are parallel to floor. \n3. Drive through heels.',
+    aiInstructions: "Ensure hips go low enough. Keep chest proud and back neutral.",
+    difficulty: 'Beginner',
+    duration: 10,
+    calories: 80,
+    image: 'https://images.pexels.com/photos/791763/pexels-photo-791763.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+    angleLandmarks: ['leftHip', 'leftKnee', 'leftAnkle'],
+    angleThresholds: { up: 165, down: 95 },
+    cameraFacing: 'side',
+    metValue: 5.5,
+    category: 'Lower body',
+  },
+  {
+    id: 'bicep-curl',
+    name: 'Bicep Curls',
+    description: 'Sculpt your arms.',
+    instructions: '1. Palms forward. \n2. Curl weights to shoulders. \n3. Controlled lowering.',
+    aiInstructions: "Keep elbows fixed at your sides. No swinging.",
+    difficulty: 'Beginner',
+    duration: 10,
+    calories: 60,
+    image: 'https://images.pexels.com/photos/1431283/pexels-photo-1431283.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+    angleLandmarks: ['leftShoulder', 'leftElbow', 'leftWrist'],
+    angleThresholds: { up: 155, down: 55 }, 
+    cameraFacing: 'side',
+    metValue: 3.5,
+    category: 'Upper body',
+  },
+  { 
+    id: 'lunges', 
+    name: 'Lunges', 
+    description: 'Build unilateral leg strength.', 
+    instructions: 'Step forward and drop back knee towards the floor.', 
+    difficulty: 'Beginner', 
+    duration: 10, 
+    calories: 90, 
+    image: 'https://images.pexels.com/photos/6456303/pexels-photo-6456303.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2', 
+    aiInstructions: "90-degree angles in both knees. Upright torso.", 
+    angleLandmarks: ['leftHip', 'leftKnee', 'leftAnkle'], 
+    angleThresholds: { up: 160, down: 100 }, 
+    cameraFacing: 'side',
+    metValue: 5.0,
+    category: 'Lower body',
+  },
+  { 
+    id: 'crunches', 
+    name: 'Crunches', 
+    description: 'Core stability and strength.', 
+    instructions: 'Lying on back, lift shoulders using abs only.', 
+    difficulty: 'Beginner', 
+    duration: 5, 
+    calories: 40, 
+    image: 'https://images.pexels.com/photos/3764395/pexels-photo-3764395.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2', 
+    aiInstructions: "Exhale on the way up. Squeeze the core.",
+    angleLandmarks: ['leftShoulder', 'leftHip', 'leftKnee'], 
+    angleThresholds: { up: 140, down: 110 },
+    cameraFacing: 'side',
+    metValue: 4.0,
+    category: 'Upper body',
+  },
+  { 
+    id: 'jumping-jacks', 
+    name: 'Jumping Jacks', 
+    description: 'Total body cardio blast.', 
+    instructions: 'Jump out while arms swing overhead. Jump in while arms drop.', 
+    difficulty: 'Beginner', 
+    duration: 10, 
+    calories: 100, 
+    image: 'https://images.pexels.com/photos/7031705/pexels-photo-7031705.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2', 
+    aiInstructions: "Full range of motion in the shoulders.",
+    angleLandmarks: ['leftHip', 'leftShoulder', 'leftElbow'],
+    angleThresholds: { up: 155, down: 35 },
+    cameraFacing: 'front',
+    metValue: 8.0,
+    category: 'Cardio',
+    type: 'reps'
+  },
+  { 
+    id: 'plank', 
+    name: 'Plank', 
+    description: 'Ultimate core hold.', 
+    instructions: 'Hold a straight line from head to heels.', 
+    difficulty: 'Beginner', 
+    duration: 1, 
+    calories: 10, 
+    image: 'https://images.pexels.com/photos/3112004/pexels-photo-3112004.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2', 
+    aiInstructions: "Keep your neck neutral and glutes squeezed.",
+    metValue: 2.5,
+    category: 'Upper body',
+    angleLandmarks: ['leftShoulder', 'leftHip', 'leftKnee'],
+    angleThresholds: { up: 165, down: 160 },
+    holdPhase: 'up',
+    cameraFacing: 'side'
+  },
+];
+
+export const PLAN_WORKOUTS: Exercise[] = [
+    {
+        id: 'lower-body-plan',
+        name: 'Lower body workout',
+        description: "5 Targeted exercises",
+        instructions: "Focus on squats, lunges, and calf raises.",
+        difficulty: 'Advanced',
+        duration: 30,
+        calories: 220,
+        image: 'https://images.pexels.com/photos/1552252/pexels-photo-1552252.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+        category: 'Lower body',
+        metValue: 6.0,
+        subExercises: [
+            { ...findExerciseById('squat'), type: 'reps', sets: 3, reps: 12 },
+            { ...findExerciseById('lunges'), type: 'reps', sets: 3, reps: 10 },
+            { id: 'wall-sits', name: 'Wall Sits', description: '90-degree hold against wall.', instructions: 'Sit against wall with knees at 90 degrees.', difficulty: 'Intermediate', duration: 2, calories: 20, image: 'https://images.pexels.com/photos/7005238/pexels-photo-7005238.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2', aiInstructions: "Back flat against wall.", type: 'time', sets: 3, holdTime: 45, metValue: 3.8, angleLandmarks: ['leftHip', 'leftKnee', 'leftAnkle'], angleThresholds: { up: 110, down: 85 }, holdPhase: 'down', cameraFacing: 'side' },
+        ]
+    },
+    {
+        id: 'upper-body-plan',
+        name: 'Upper body workout',
+        description: "Core and Arms focus",
+        instructions: "Combination of push-ups, planks, and curls.",
+        difficulty: 'Intermediate',
+        duration: 20,
+        calories: 150,
+        image: 'https://images.pexels.com/photos/3289711/pexels-photo-3289711.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+        category: 'Upper body',
+        metValue: 5.5,
+        subExercises: [
+            { ...findExerciseById('plank'), type: 'time', sets: 3, holdTime: 60 },
+            { ...findExerciseById('push-up'), type: 'reps', sets: 3, reps: 10 },
+            { ...findExerciseById('crunches'), type: 'reps', sets: 3, reps: 15 },
+            { ...findExerciseById('bicep-curl'), type: 'reps', sets: 3, reps: 12 },
+        ]
+    },
+    {
+        id: 'cardio-plan',
+        name: 'Cardio workout',
+        description: "High intensity burn",
+        instructions: "Keep the heart rate elevated throughout.",
+        difficulty: 'Intermediate',
+        duration: 15,
+        calories: 180,
+        image: 'https://images.pexels.com/photos/863977/pexels-photo-863977.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+        category: 'Cardio',
+        metValue: 8.0,
+        subExercises: [
+            { ...findExerciseById('jumping-jacks'), type: 'reps', sets: 1, reps: 50 },
+            { id: 'high-knees', name: 'High Knees', description: 'Run in place.', instructions: 'Knees to hip height.', difficulty: 'Intermediate', duration: 5, calories: 70, image: 'https://images.pexels.com/photos/7031706/pexels-photo-7031706.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2', aiInstructions: "Pump your arms.", type: 'reps', sets: 1, reps: 40, angleLandmarks: ['leftShoulder', 'leftHip', 'leftKnee'], angleThresholds: { up: 160, down: 105 }, cameraFacing: 'side', metValue: 10.0 },
+        ]
+    },
+];
